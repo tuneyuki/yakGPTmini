@@ -11,19 +11,10 @@ import {
 } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 
-import { testKey as testKeyOpenAI } from "@/stores/OpenAI";
-import { testKey as testKey11Labs } from "@/stores/ElevenLabs";
-import { testKey as testKeyAzure } from "@/stores/AzureSDK";
-
-import { useChatStore } from "@/stores/ChatStore";
 import {
-  IconBrandWindows,
   IconCheck,
-  IconRobot,
-  IconVolume,
   IconX,
 } from "@tabler/icons-react";
-import { update } from "@/stores/ChatActions";
 
 export function APIPanel({
   name,
@@ -91,7 +82,6 @@ export function APIPanel({
     error: <IconX color="red" size={px("1rem")} />,
   };
   const icon = iconMap[checkStatus];
-  console.log(apiKey);
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -130,105 +120,9 @@ export function APIPanel({
 }
 
 export default function KeyModal({ close }: { close: () => void }) {
-  const apiKeyOpenAI = useChatStore((state) => state.apiKey);
-  const apiKey11Labs = useChatStore((state) => state.apiKey11Labs);
-  const apiKeyAzure = useChatStore((state) => state.apiKeyAzure);
-  const apiKeyAzureRegion = useChatStore((state) => state.apiKeyAzureRegion);
-
-  const setApiKeyOpenAI = (key: string) => update({ apiKey: key });
-  const setApiKeyAzure = (key: string) => update({ apiKeyAzure: key });
-  const setApiKeyAzureRegion = (region: string) =>
-    update({ apiKeyAzureRegion: region });
-  const setApiKey11Labs = (key: string) => update({ apiKey11Labs: key });
-
   return (
     <div>
-      <Box mx="auto">
-        <Tabs defaultValue="openai">
-          <Tabs.List>
-            <Tabs.Tab value="openai" icon={<IconRobot size={px("0.8rem")} />}>
-              OpenAI
-            </Tabs.Tab>
-            <Tabs.Tab
-              value="azure"
-              icon={<IconBrandWindows size={px("0.8rem")} />}
-            >
-              Azure
-            </Tabs.Tab>
-            <Tabs.Tab value="11labs" icon={<IconVolume size={px("0.8rem")} />}>
-              Eleven Labs
-            </Tabs.Tab>
-          </Tabs.List>
 
-          <Tabs.Panel value="openai" pt="xs">
-            <APIPanel
-              name="Enter Your OpenAI API Key"
-              initialKey={apiKeyOpenAI}
-              setKeyFun={setApiKeyOpenAI}
-              descriptionAboveInput="You need an OpenAI API Key. Your API Key is stored locally on your browser and never sent anywhere else."
-              descriptionBelowInput={
-                <p>
-                  → Get your API key from the{" "}
-                  <a
-                    target="_blank"
-                    href="https://platform.openai.com/account/api-keys"
-                  >
-                    OpenAI dashboard
-                  </a>
-                  .
-                </p>
-              }
-              validateKey={testKeyOpenAI}
-              closeModal={close}
-            />
-          </Tabs.Panel>
-          <Tabs.Panel value="azure" pt="xs">
-            <APIPanel
-              name="Enter Your Azure Speech API Key"
-              initialKey={apiKeyAzure}
-              initialRegion={apiKeyAzureRegion}
-              setKeyFun={setApiKeyAzure}
-              setKeyFunRegion={setApiKeyAzureRegion}
-              descriptionAboveInput="If you'd like to use TTS via Azure, you will need an Azure Speech API Key. Your API Key is stored locally on your browser and never sent anywhere else. Note that cost estimation does not work for Azure, so watch your usage!"
-              descriptionBelowInput={
-                <p>
-                  → Azure gives a $200 free credit on signup.{" "}
-                  <a
-                    target="_blank"
-                    href="https://carldesouza.com/get-a-microsoft-cognitive-services-subscription-key/"
-                  >
-                    This guide explains the steps.
-                  </a>
-                </p>
-              }
-              validateKey={testKeyAzure}
-              closeModal={close}
-            />
-          </Tabs.Panel>
-          <Tabs.Panel value="11labs" pt="xs">
-            <APIPanel
-              name="Enter Your Eleven Labs API Key"
-              initialKey={apiKey11Labs}
-              setKeyFun={setApiKey11Labs}
-              descriptionAboveInput="If you'd like to use TTS via Eleven Labs, you will need an Eleven Labs API Key. Your API Key is stored locally on your browser and never sent anywhere else. Note that cost estimation does not work for ElevenLabs, so watch your usage!"
-              descriptionBelowInput={
-                <p>
-                  → Get your API key from your{" "}
-                  <a
-                    target="_blank"
-                    href="https://beta.elevenlabs.io/speech-synthesis"
-                  >
-                    ElevenLabs profile
-                  </a>
-                  .
-                </p>
-              }
-              validateKey={testKey11Labs}
-              closeModal={close}
-            />
-          </Tabs.Panel>
-        </Tabs>
-      </Box>
     </div>
   );
 }

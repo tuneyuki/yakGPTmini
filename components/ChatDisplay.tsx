@@ -121,7 +121,7 @@ const ChatDisplay = () => {
 
   const activeChat = chats.find((chat) => chat.id === activeChatId);
 
-  const pushToTalkMode = useChatStore((state) => state.pushToTalkMode);
+  // const pushToTalkMode = useChatStore((state) => state.pushToTalkMode);
   const lastMessage = activeChat?.messages[activeChat.messages.length - 1];
 
   const scrolledToBottom = () => {
@@ -161,7 +161,7 @@ const ChatDisplay = () => {
   return (
     <div
       className={classes.container}
-      style={{ paddingBottom: pushToTalkMode ? "7em" : "5em" }}
+      style={{ paddingBottom: "5em" }}
     >
       <div className={classes.chatContainer}>
         <MuHeader />

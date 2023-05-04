@@ -1,5 +1,5 @@
 import { useChatStore } from "@/stores/ChatStore";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import {
   ActionIcon,
   Box,
@@ -30,7 +30,7 @@ import {
 } from "@tabler/icons-react";
 import { useRef, useState } from "react";
 import ClearChatsButton from "./ClearChatsButton";
-import KeyModal from "./KeyModal";
+// import KeyModal from "./KeyModal";
 import SettingsModal from "./SettingsModal";
 import { useRouter } from "next/router";
 import {
@@ -320,24 +320,6 @@ export default function NavbarSimple() {
           <span>
             {upperFirst(colorScheme === "light" ? "dark" : "light")} theme
           </span>
-        </a>
-
-        <Modal opened={openedKeyModal} onClose={closeKeyModal} title="API Keys">
-          <KeyModal close={closeKeyModal} />
-        </Modal>
-
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => {
-            event.preventDefault();
-            openedSettingsModal && closeSettingsModal();
-            openKeyModal();
-            if (isSmall) setNavOpened(false);
-          }}
-        >
-          <IconKey className={classes.linkIcon} stroke={1.5} />
-          <span>API Keys</span>
         </a>
 
         <Modal

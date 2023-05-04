@@ -32,15 +32,15 @@ function MenuItem({
 }
 
 export default function UIController() {
-  const showTextDuringPTT = useChatStore((state) => state.showTextDuringPTT);
+  // const showTextDuringPTT = useChatStore((state) => state.showTextDuringPTT);
   const modelChoicesChat =
     useChatStore((state) => state.modelChoicesChat) || [];
   const settingsForm = useChatStore((state) => state.settingsForm);
-  const modelChoiceSTT = useChatStore((state) => state.modelChoiceSTT);
-  const modelChoiceTTS = useChatStore((state) => state.modelChoiceTTS);
-  const autoSendStreamingSTT = useChatStore(
-    (state) => state.autoSendStreamingSTT
-  );
+  // const modelChoiceSTT = useChatStore((state) => state.modelChoiceSTT);
+  // const modelChoiceTTS = useChatStore((state) => state.modelChoiceTTS);
+  // const autoSendStreamingSTT = useChatStore(
+  //   (state) => state.autoSendStreamingSTT
+  // );
 
   useEffect(() => {
     refreshModels();
@@ -63,52 +63,7 @@ export default function UIController() {
           }),
       })),
     },
-    {
-      label: "Speech to Text",
-      items: [
-        {
-          text: "Azure",
-          checked: modelChoiceSTT === "azure",
-          onClick: () => update({ modelChoiceSTT: "azure" }),
-        },
-        {
-          text: "Whisper",
-          checked: modelChoiceSTT === "whisper",
-          onClick: () => update({ modelChoiceSTT: "whisper" }),
-        },
-      ],
-    },
-    {
-      label: "Text to Speech",
-      items: [
-        {
-          text: "Azure",
-          checked: modelChoiceTTS === "azure",
-          onClick: () => update({ modelChoiceTTS: "azure" }),
-        },
-        {
-          text: "ElevenLabs",
-          checked: modelChoiceTTS === "11labs",
-          onClick: () => update({ modelChoiceTTS: "11labs" }),
-        },
-      ],
-    },
-    {
-      label: "Speech to Text Settings",
-      items: [
-        {
-          text: "Show input next to mic",
-          checked: showTextDuringPTT,
-          onClick: () => update({ showTextDuringPTT: !showTextDuringPTT }),
-        },
-        {
-          text: "Auto send text",
-          checked: autoSendStreamingSTT,
-          onClick: () =>
-            update({ autoSendStreamingSTT: !autoSendStreamingSTT }),
-        },
-      ],
-    },
+
   ];
 
   return (

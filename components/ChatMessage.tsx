@@ -139,7 +139,7 @@ const useStyles = createStyles((theme: MantineTheme) => ({
 export default function ChatDisplay({ message }: { message: Message }) {
   const { classes, cx } = useStyles();
 
-  const pushToTalkMode = useChatStore((state) => state.pushToTalkMode);
+  // const pushToTalkMode = useChatStore((state) => state.pushToTalkMode);
 
   const handleMainAction = (message: Message) => {
     if (message.role === "assistant") {

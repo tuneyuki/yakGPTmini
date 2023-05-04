@@ -160,7 +160,6 @@ export async function streamCompletion(
       for (const message of allMessages) {
         // Remove first 5 characters ("data:") of response
         const cleaned = message.toString().slice(5);
-
         if (!cleaned || cleaned === " [DONE]") {
           return;
         }
@@ -174,6 +173,7 @@ export async function streamCompletion(
         }
 
         const content = parsed.choices[0]?.delta?.content;
+        // console.log(content);
         if (content === undefined) {
           continue;
         }

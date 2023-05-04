@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { Message } from "./Message";
 import { persist } from "zustand/middleware";
 import { Chat } from "./Chat";
-import { SpeechRecognizer } from "microsoft-cognitiveservices-speech-sdk";
-import type { AudioChunk } from "./PlayerActions";
+// import { SpeechRecognizer } from "microsoft-cognitiveservices-speech-sdk";
+// import type { AudioChunk } from "./PlayerActions";
 
 export type APIState = "idle" | "loading" | "error";
 export type AudioState = "idle" | "recording" | "transcribing" | "processing";
@@ -17,7 +17,6 @@ export const excludeFromState = [
   "apiState",
   "audioState",
   "submitNextAudio",
-  "audioChunks",
   "ttsID",
   "ttsText",
   "activeChatId",
@@ -98,7 +97,7 @@ export interface ChatState {
 
   pushToTalkMode: boolean;
   recorder: MediaRecorder | undefined;
-  recognizer: SpeechRecognizer | undefined;
+  // recognizer: SpeechRecognizer | undefined;
   recorderTimeout: ReturnType<typeof setTimeout> | undefined;
   submitNextAudio: boolean;
   audioState: AudioState;
@@ -113,7 +112,7 @@ export interface ChatState {
   playerIdx: number;
   playerState: "playing" | "paused" | "idle";
   playerApiState: APIState;
-  playerAudioQueue: AudioChunk[];
+  // playerAudioQueue: AudioChunk[];
 
   showTextDuringPTT: boolean;
   autoSendStreamingSTT: boolean;
