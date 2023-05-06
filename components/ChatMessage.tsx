@@ -9,11 +9,11 @@ import {
 } from "@mantine/core";
 
 import { useChatStore } from "@/stores/ChatStore";
-import { IconEdit, IconRepeat, IconSettings, IconX } from "@tabler/icons-react";
+import { IconEdit, IconRepeat, IconSettings, IconX, IconCookieMan, IconBrandOpenai } from "@tabler/icons-react";
 import MessageDisplay from "./MessageDisplay";
 
-import UserIcon from "./UserIcon";
-import AssistantIcon from "./AssistantIcon";
+// import UserIcon from "./UserIcon";
+// import AssistantIcon from "./AssistantIcon";
 import { Message } from "@/stores/Message";
 import {
   delMessage,
@@ -182,9 +182,11 @@ export default function ChatDisplay({ message }: { message: Message }) {
                   {message.role === "system" ? (
                     <IconSettings />
                   ) : message.role === "assistant" ? (
-                    <AssistantIcon width={px("1.5rem")} height={px("1.5rem")} />
+                    // <AssistantIcon width={px("1.5rem")} height={px("1.5rem")} />
+                    <IconBrandOpenai />
                   ) : (
-                    <UserIcon width={px("1.5rem")} height={px("1.5rem")} />
+                    // <UserIcon width={px("1.5rem")} height={px("1.5rem")} />
+                    <IconCookieMan />
                   )}
                 </Avatar>
               </div>

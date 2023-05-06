@@ -17,7 +17,7 @@ import {
 } from "@mantine/core";
 // import ISO6391 from "iso-639-1";
 import { useForm } from "@mantine/form";
-import { IconBraces, IconMicrophone, IconSettings } from "@tabler/icons-react";
+import { IconSettings } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 // import * as ElevenLabs from "@/stores/ElevenLabs";
 import { refreshModels, updateSettingsForm } from "@/stores/ChatActions";
